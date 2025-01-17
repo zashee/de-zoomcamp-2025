@@ -1,0 +1,21 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Jupyter notebook
+.ipynb_checkpoints
+
+# Virtual environments
+.venv
+
+# uv package manager
+uv.lock
+
+# Other ignored files or directories
+keys
+data
+ny_taxi_postgres_data
