@@ -1,0 +1,28 @@
+id: postgres_taxi_parent_flow
+namespace: zoomcamp
+description: |
+  test how foreach loop works
+
+inputs:
+  - id: year
+    type: SELECT
+    displayName: Select year
+    values: ["2019", "2020", "2021"]
+    defaults: "2021"
+
+tasks:
+  - id: 1_loop_taxi_types
+    type: io.kestra.plugin.core.flow.ForEach
+    values: '["yellow", "green"]'
+    tasks:
+      - id: 1-1_loop_year_months
+        type: io.kestra.plugin.core.flow.ForEach
+        values: '["01", "02", "03", "04", "05", "06", "07"]'
+        tasks:
+          - id : 1-1-1_return_filename
+            type: io.kestra.plugin.core.flow.Subflow
+            namespace: zoomcamp
+            flowId: postgres_taxi_subflow
+            inputs:
+                taxi: "{{parent.taskrun.value}}"
+                year_month: "{{inputs.year}}-{{taskrun.value}}"
