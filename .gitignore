@@ -19,3 +19,5 @@ uv.lock
 keys
 data
 ny_taxi_postgres_data
+google-cloud-credentials.json
+logs
