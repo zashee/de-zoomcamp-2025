@@ -2,14 +2,12 @@ version: 2
 
 sources:
   - name: staging
-    database: "{{ env_var('DBT_DATABASE', 'taxi-rides-ny-339813-412521') }}"
-    schema: "{{ env_var('DBT_SCHEMA', 'trips_data_all') }}"
-      # loaded_at_field: record_loaded_at
+    database: annular-ocean-447506-s1
+    schema: dbt_zshee
+
     tables:
       - name: green_tripdata
       - name: yellow_tripdata
-         # freshness:
-           # error_after: {count: 6, period: hour}
 
 models:
     - name: stg_green_tripdata
